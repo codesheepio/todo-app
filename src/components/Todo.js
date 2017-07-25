@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 
+import Title from './Title';
 import styles from './Todo.local.scss';
 
 
@@ -9,7 +10,7 @@ const cx = classNames.bind(styles);
 function Todo() {
   return (
     <div className="container">
-      <h1 className={cx('text-center', 'heading')}>todos</h1>
+      <Title>todos</Title>
       <div className="row">
         <div className="col-lg-6 col-lg-push-3 col-sm-8 col-sm-push-2">
           <input
