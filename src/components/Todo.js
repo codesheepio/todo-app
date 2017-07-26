@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 
 import Title from './Title';
 import TaskCreate from './TaskCreate';
+import TaskList from './TaskList';
 import styles from './Todo.local.scss';
 
 
@@ -16,7 +17,7 @@ function Todo() {
         <div className="col-lg-6 col-lg-push-3 col-sm-8 col-sm-push-2">
           <TaskCreate />
           <hr />
-          <ul className="list-group">
+          <TaskList>
             <li className={cx('list-group-item', 'taskItem')}>
               <input type="checkbox" className={cx('btnToggle')} />
               <button className={cx('btn', 'btn-sm', 'btn-link', 'btnRemove')}>✕</button>
@@ -38,7 +39,7 @@ function Todo() {
                 Do homework
               </div>
             </li>
-          </ul>
+          </TaskList>
           <hr />
           <div className="row">
             <div className="col-sm-3 text-center">
