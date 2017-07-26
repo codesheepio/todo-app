@@ -1,0 +1,10 @@
+@import './../assets/css/variables';
+
+.taskFilter {
+  margin: 0 !important;
+
+  :global li > span {
+    cursor: pointer;
+    text-transform: capitalize;
+  }
+}
