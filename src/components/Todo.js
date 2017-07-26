@@ -1,13 +1,10 @@
 import React from 'react';
-import classNames from 'classnames/bind';
 
 import Title from './Title';
 import TaskCreate from './TaskCreate';
 import TaskList from './TaskList';
+import TaskFooter from './TaskFooter';
 
-import styles from './Todo.local.scss';
-
-const cx = classNames.bind(styles);
 const TASKS = [
   {
     id: 1,
@@ -37,21 +34,7 @@ function Todo() {
           <hr />
           <TaskList tasks={TASKS} filter={FILTER} />
           <hr />
-          <div className="row">
-            <div className="col-sm-3 text-center">
-              <button className="btn btn-sm btn-link">Clear done</button>
-            </div>
-            <div className="col-sm-6 text-center">
-              <ul className={cx('pagination', 'pagination-sm', 'taskFilter')}>
-                <li className="active"><span>All</span></li>
-                <li><span>Active</span></li>
-                <li><span>Done</span></li>
-              </ul>
-            </div>
-            <div className="col-sm-3 text-center hidden-xs">
-              <span className={cx('text-muted', 'small', 'activeCount')}>2 items left</span>
-            </div>
-          </div>
+          <TaskFooter tasks={TASKS} filter={FILTER} />
         </div>
       </div>
     </div>
