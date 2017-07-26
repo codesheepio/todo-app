@@ -4,10 +4,27 @@ import classNames from 'classnames/bind';
 import Title from './Title';
 import TaskCreate from './TaskCreate';
 import TaskList from './TaskList';
+
 import styles from './Todo.local.scss';
 
-
 const cx = classNames.bind(styles);
+const TASKS = [
+  {
+    id: 1,
+    title: 'Prepare dinner ingredients',
+    state: 'active',
+  },
+  {
+    id: 2,
+    title: 'Do dishes left over from lastnight',
+    state: 'active',
+  },
+  {
+    id: 3,
+    title: 'Do homework',
+    state: 'done',
+  },
+];
 
 function Todo() {
   return (
@@ -18,27 +35,9 @@ function Todo() {
           <TaskCreate />
           <hr />
           <TaskList>
-            <li className={cx('list-group-item', 'taskItem')}>
-              <input type="checkbox" className={cx('btnToggle')} />
-              <button className={cx('btn', 'btn-sm', 'btn-link', 'btnRemove')}>✕</button>
-              <div className={cx('title')}>
-                Prepare dinner ingredients
-              </div>
-            </li>
-            <li className={cx('list-group-item', 'taskItem')}>
-              <input type="checkbox" className={cx('btnToggle')} />
-              <button className={cx('btn', 'btn-sm', 'btn-link', 'btnRemove')}>✕</button>
-              <div className={cx('title')}>
-                Do dishes left over from lastnight
-              </div>
-            </li>
-            <li className={cx('list-group-item', 'taskItem', 'done')}>
-              <input type="checkbox" className={cx('btnToggle')} defaultChecked />
-              <button className={cx('btn', 'btn-sm', 'btn-link', 'btnRemove')}>✕</button>
-              <div className={cx('title')}>
-                Do homework
-              </div>
-            </li>
+            {
+              TASKS.map(task => <TaskItem key={task.id} task={task} />)
+            }
           </TaskList>
           <hr />
           <div className="row">

@@ -1,0 +1,43 @@
+@import './../assets/css/variables';
+
+.taskItem {
+  .btnToggle {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+
+    font-size: $font-size-large;
+  }
+
+  .btnRemove {
+    display: none;
+
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    padding: 2px;
+
+    font-size: $font-size-large;
+    line-height: 1;
+    text-decoration: none !important;
+  }
+
+  .title {
+    padding-left: 24px;
+    padding-right: 24px;
+
+    font-size: $font-size-large;
+    font-weight: 300;
+  }
+
+  &.done {
+    text-decoration: line-through;
+    color: $text-muted;
+  }
+
+  &:hover {
+    .btnRemove {
+      display: block;
+    }
+  }
+}
