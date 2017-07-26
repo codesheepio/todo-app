@@ -1,15 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function TaskList(props) {
+import TaskItem from './TaskItem';
+
+function TaskList({ tasks, filter }) {
   return (
     <ul className="list-group">
-      {props.children}
+      {
+        tasks
+          .filter(({ state }) => (filter === 'all' ? true : filter === state))
+          .map(task => <TaskItem key={task.id} task={task} />)
+      }
     </ul>
   );
 }
 TaskList.propTypes = {
-  children: PropTypes.node.isRequired,
+  tasks: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    state: PropTypes.oneOf(['active', 'done']),
+  })).isRequired,
+  filter: PropTypes.oneOf(['all', 'active', 'done']).isRequired,
 };
 
 export default TaskList;

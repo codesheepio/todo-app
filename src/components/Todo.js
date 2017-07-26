@@ -25,6 +25,7 @@ const TASKS = [
     state: 'done',
   },
 ];
+const FILTER = 'all';
 
 function Todo() {
   return (
@@ -34,11 +35,7 @@ function Todo() {
         <div className="col-lg-6 col-lg-push-3 col-sm-8 col-sm-push-2">
           <TaskCreate />
           <hr />
-          <TaskList>
-            {
-              TASKS.map(task => <TaskItem key={task.id} task={task} />)
-            }
-          </TaskList>
+          <TaskList tasks={TASKS} filter={FILTER} />
           <hr />
           <div className="row">
             <div className="col-sm-3 text-center">
