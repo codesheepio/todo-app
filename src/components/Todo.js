@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames/bind';
 
 import Title from './Title';
+import TaskCreate from './TaskCreate';
 import styles from './Todo.local.scss';
 
 
@@ -13,11 +14,7 @@ function Todo() {
       <Title>todos</Title>
       <div className="row">
         <div className="col-lg-6 col-lg-push-3 col-sm-8 col-sm-push-2">
-          <input
-            className="form-control input-lg"
-            type="text"
-            placeholder="What is needed to be done ?"
-          />
+          <TaskCreate />
           <hr />
           <ul className="list-group">
             <li className={cx('list-group-item', 'taskItem')}>
