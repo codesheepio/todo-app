@@ -24,21 +24,33 @@ const TASKS = [
 ];
 const FILTER = 'all';
 
-function Todo() {
-  return (
-    <div className="container">
-      <Title>todos</Title>
-      <div className="row">
-        <div className="col-lg-6 col-lg-push-3 col-sm-8 col-sm-push-2">
-          <TaskCreate />
-          <hr />
-          <TaskList tasks={TASKS} filter={FILTER} />
-          <hr />
-          <TaskFooter tasks={TASKS} filter={FILTER} />
+class Todo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tasks: TASKS,
+      filter: FILTER,
+    };
+  }
+
+  render() {
+    const { tasks, filter } = this.state;
+
+    return (
+      <div className="container">
+        <Title>todos</Title>
+        <div className="row">
+          <div className="col-lg-6 col-lg-push-3 col-sm-8 col-sm-push-2">
+            <TaskCreate />
+            <hr />
+            <TaskList tasks={tasks} filter={filter} />
+            <hr />
+            <TaskFooter tasks={tasks} filter={filter} />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Todo;
