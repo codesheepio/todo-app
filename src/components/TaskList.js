@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import TaskItem from './TaskItem';
 
-function TaskList({ tasks, filter, handleTaskRemove }) {
+function TaskList({ tasks, filter, handleTaskRemove, handleTaskToggle }) {
   return (
     <ul className="list-group">
       {
@@ -13,6 +13,7 @@ function TaskList({ tasks, filter, handleTaskRemove }) {
             key={task.id}
             task={task}
             handleTaskRemove={handleTaskRemove}
+            handleTaskToggle={handleTaskToggle}
           />))
       }
     </ul>
@@ -26,6 +27,7 @@ TaskList.propTypes = {
   })).isRequired,
   filter: PropTypes.oneOf(['all', 'active', 'done']).isRequired,
   handleTaskRemove: PropTypes.func.isRequired,
+  handleTaskToggle: PropTypes.func.isRequired,
 };
 
 export default TaskList;

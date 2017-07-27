@@ -6,7 +6,7 @@ import styles from './TaskItem.local.scss';
 
 const cx = classNames.bind(styles);
 
-function TaskItem({ task, handleTaskRemove }) {
+function TaskItem({ task, handleTaskRemove, handleTaskToggle }) {
   const { id, title, state } = task;
 
   return (
@@ -20,6 +20,7 @@ function TaskItem({ task, handleTaskRemove }) {
         type="checkbox"
         className={cx('btnToggle')}
         defaultChecked={state === 'done'}
+        onClick={handleTaskToggle(id)}
       />
       <button
         className={cx(
@@ -42,6 +43,7 @@ TaskItem.propTypes = {
     state: PropTypes.oneOf(['active', 'done']),
   }).isRequired,
   handleTaskRemove: PropTypes.func.isRequired,
+  handleTaskToggle: PropTypes.func.isRequired,
 };
 
 export default TaskItem;

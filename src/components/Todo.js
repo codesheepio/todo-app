@@ -35,6 +35,7 @@ class Todo extends React.Component {
 
     this.handleTaskCreate = this.handleTaskCreate.bind(this);
     this.handleTaskRemove = this.handleTaskRemove.bind(this);
+    this.handleTaskToggle = this.handleTaskToggle.bind(this);
     this.handleFilterSet = this.handleFilterSet.bind(this);
     this.handleClearDone = this.handleClearDone.bind(this);
   }
@@ -57,6 +58,19 @@ class Todo extends React.Component {
 
       this.setState({
         tasks: tasks.filter(task => task.id !== id),
+      });
+    };
+  }
+
+  handleTaskToggle(id) {
+    return () => {
+      const { tasks } = this.state;
+
+      this.setState({
+        tasks: tasks.map(task => (task.id === id
+          ? { ...task, state: (task.state === 'active' ? 'done' : 'active') }
+          : task),
+        ),
       });
     };
   }
@@ -87,6 +101,7 @@ class Todo extends React.Component {
               tasks={tasks}
               filter={filter}
               handleTaskRemove={this.handleTaskRemove}
+              handleTaskToggle={this.handleTaskToggle}
             />
             <hr />
             <TaskFooter
