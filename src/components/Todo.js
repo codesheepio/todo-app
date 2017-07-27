@@ -34,6 +34,7 @@ class Todo extends React.Component {
     };
 
     this.handleTaskCreate = this.handleTaskCreate.bind(this);
+    this.handleTaskRemove = this.handleTaskRemove.bind(this);
     this.handleFilterSet = this.handleFilterSet.bind(this);
     this.handleClearDone = this.handleClearDone.bind(this);
   }
@@ -48,6 +49,16 @@ class Todo extends React.Component {
       }],
       tasksNextId: tasksNextId + 1,
     });
+  }
+
+  handleTaskRemove(id) {
+    return () => {
+      const { tasks } = this.state;
+
+      this.setState({
+        tasks: tasks.filter(task => task.id !== id),
+      });
+    };
   }
 
   handleFilterSet(filter) {
@@ -72,7 +83,11 @@ class Todo extends React.Component {
           <div className="col-lg-6 col-lg-push-3 col-sm-8 col-sm-push-2">
             <TaskCreate handleTaskCreate={this.handleTaskCreate} />
             <hr />
-            <TaskList tasks={tasks} filter={filter} />
+            <TaskList
+              tasks={tasks}
+              filter={filter}
+              handleTaskRemove={this.handleTaskRemove}
+            />
             <hr />
             <TaskFooter
               tasks={tasks}
