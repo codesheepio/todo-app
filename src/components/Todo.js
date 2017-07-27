@@ -28,12 +28,26 @@ class Todo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      tasksNextId: TASKS.length + 1,
       tasks: TASKS,
       filter: FILTER,
     };
 
+    this.handleTaskCreate = this.handleTaskCreate.bind(this);
     this.handleFilterSet = this.handleFilterSet.bind(this);
     this.handleClearDone = this.handleClearDone.bind(this);
+  }
+
+  handleTaskCreate(title) {
+    const { tasksNextId, tasks } = this.state;
+    this.setState({
+      tasks: [...tasks, {
+        id: tasksNextId,
+        title,
+        state: 'active',
+      }],
+      tasksNextId: tasksNextId + 1,
+    });
   }
 
   handleFilterSet(filter) {
@@ -56,7 +70,7 @@ class Todo extends React.Component {
         <Title>todos</Title>
         <div className="row">
           <div className="col-lg-6 col-lg-push-3 col-sm-8 col-sm-push-2">
-            <TaskCreate />
+            <TaskCreate handleTaskCreate={this.handleTaskCreate} />
             <hr />
             <TaskList tasks={tasks} filter={filter} />
             <hr />
