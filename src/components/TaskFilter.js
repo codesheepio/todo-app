@@ -6,13 +6,17 @@ import styles from './TaskFilter.local.scss';
 
 const cx = classNames.bind(styles);
 
-function TaskFilter({ filter }) {
+function TaskFilter({ filter, handleFilterSet }) {
   return (
     <ul className={cx('pagination', 'pagination-sm', 'taskFilter')}>
       {
         ['all', 'active', 'done'].map(state => (
           <li key={state} className={cx({ active: state === filter })}>
-            <span>{state}</span>
+            <span
+              role="button"
+              tabIndex={-1}
+              onClick={handleFilterSet(state)}
+            >{state}</span>
           </li>
         ))
       }
@@ -21,6 +25,7 @@ function TaskFilter({ filter }) {
 }
 TaskFilter.propTypes = {
   filter: PropTypes.oneOf(['all', 'active', 'done']).isRequired,
+  handleFilterSet: PropTypes.func.isRequired,
 };
 
 export default TaskFilter;

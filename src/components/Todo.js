@@ -31,6 +31,12 @@ class Todo extends React.Component {
       tasks: TASKS,
       filter: FILTER,
     };
+
+    this.handleFilterSet = this.handleFilterSet.bind(this);
+  }
+
+  handleFilterSet(filter) {
+    return () => this.setState({ filter });
   }
 
   render() {
@@ -45,7 +51,11 @@ class Todo extends React.Component {
             <hr />
             <TaskList tasks={tasks} filter={filter} />
             <hr />
-            <TaskFooter tasks={tasks} filter={filter} />
+            <TaskFooter
+              tasks={tasks}
+              filter={filter}
+              handleFilterSet={this.handleFilterSet}
+            />
           </div>
         </div>
       </div>
