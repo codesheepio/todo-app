@@ -7,11 +7,14 @@ import styles from './TaskFooter.local.scss';
 
 const cx = classNames.bind(styles);
 
-function TaskFooter({ tasks, filter, handleFilterSet }) {
+function TaskFooter({ tasks, filter, handleFilterSet, handleClearDone }) {
   return (
     <div className="row">
       <div className="col-sm-3 text-center">
-        <button className="btn btn-sm btn-link">Clear done</button>
+        <button
+          className="btn btn-sm btn-link"
+          onClick={handleClearDone}
+        >Clear done</button>
       </div>
       <div className="col-sm-6 text-center">
         <TaskFilter
@@ -31,6 +34,7 @@ TaskFooter.propTypes = {
   tasks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   filter: PropTypes.oneOf(['all', 'active', 'done']).isRequired,
   handleFilterSet: PropTypes.func.isRequired,
+  handleClearDone: PropTypes.func.isRequired,
 };
 
 export default TaskFooter;

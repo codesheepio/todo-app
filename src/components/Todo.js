@@ -33,10 +33,19 @@ class Todo extends React.Component {
     };
 
     this.handleFilterSet = this.handleFilterSet.bind(this);
+    this.handleClearDone = this.handleClearDone.bind(this);
   }
 
   handleFilterSet(filter) {
     return () => this.setState({ filter });
+  }
+
+  handleClearDone() {
+    const { tasks } = this.state;
+
+    this.setState({
+      tasks: tasks.filter(({ state }) => state !== 'done'),
+    });
   }
 
   render() {
@@ -55,6 +64,7 @@ class Todo extends React.Component {
               tasks={tasks}
               filter={filter}
               handleFilterSet={this.handleFilterSet}
+              handleClearDone={this.handleClearDone}
             />
           </div>
         </div>
