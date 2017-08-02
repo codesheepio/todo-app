@@ -27,7 +27,7 @@ function App() {
               </div>
             </li>
             <li className={cx('list-group-item', 'taskItem')}>
-              <input type="checkbox" className={cx('btnToggle')}/>
+              <input type="checkbox" className={cx('btnToggle')} />
               <button className={cx('btn', 'btn-sm', 'btn-link', 'btnRemove')}>✕</button>
               <div className={cx('title')}>
                 Do dishes left over from lastnight
